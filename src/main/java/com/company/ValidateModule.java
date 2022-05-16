@@ -7,6 +7,9 @@ import java.util.regex.Pattern;
 public class ValidateModule {
     static public void validateOperationsOrder(String infixExp) throws infixExpErrorException {
 
+        if (infixExp.isEmpty()) {
+            throw new infixExpErrorException("Пустая строка");
+        }
         Matcher matcher = Pattern.compile("[^.()+\\-*/0-9]").matcher(infixExp);
         if (matcher.find()) {
             throw new infixExpErrorException("Введены недопустимые символ(ы): " +
@@ -41,6 +44,9 @@ public class ValidateModule {
 
     static public void validateParenthesesOrder(String infixExp) throws infixExpErrorException {
         ArrayDeque<Character> stack = new ArrayDeque<Character>();
+        if (infixExp.isEmpty()) {
+            throw new infixExpErrorException("Пустая строка");
+        }
         for (int i = 0; i < infixExp.length(); ++i) {
             char ch = infixExp.charAt(i);
             if (ch == '(') {

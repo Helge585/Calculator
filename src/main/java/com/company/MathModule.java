@@ -52,7 +52,7 @@ public class MathModule {
                 return first * second;
             case '/':
                 if (second == 0) {
-                    throw new ArithmeticException();
+                    throw new IllegalArgumentException();
                 }
                 return first / second;
             default:
